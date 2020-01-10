@@ -1,23 +1,20 @@
-import {graphql, StaticQuery} from 'gatsby'
-import React, {useState} from 'react'
+import { graphql, StaticQuery } from 'gatsby'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 
 const query = graphql`
   query SiteTitleQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
   }
 `
 
-function LayoutContainer (props) {
+const LayoutContainer = props => {
   const [showNav, setShowNav] = useState(false)
-  function handleShowNav () {
-    setShowNav(true)
-  }
-  function handleHideNav () {
-    setShowNav(false)
-  }
+  const handleShowNav = () => setShowNav(true)
+  const handleHideNav = () => setShowNav(false)
+
   return (
     <StaticQuery
       query={query}
